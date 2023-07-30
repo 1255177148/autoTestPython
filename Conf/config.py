@@ -15,7 +15,7 @@ class MyParser(ConfigParser):
             d[k] = dict(d[k])
         return d
 
-def get_all_conf(self):
+def get_all_conf():
         _config = MyParser()
         result = {}
         if os.path.isfile(configFile):
@@ -28,3 +28,5 @@ def get_all_conf(self):
 config = get_all_conf()
 sys_config = config['sys']
 smtp_config = config['smtp']
+email_config = config['email']
+log_config = config['log']
