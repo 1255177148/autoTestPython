@@ -1,0 +1,2 @@
+2023-07-31 11:18:35,983 - main.log - log.py[line:44] - INFO - log ≤‚ ‘------
+2023-07-31 11:20:38,422 - main.log - log.py[line:50] - INFO - log ≤‚ ‘------

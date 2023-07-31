@@ -3,7 +3,6 @@ import configparser
 from configparser import ConfigParser
 
 configDir = os.path.dirname(__file__) # 获取当前文件所在的目录
-print(configDir)
 configFile = os.path.join(configDir, 'config.ini')
 
 class MyParser(ConfigParser):
