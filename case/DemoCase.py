@@ -1,14 +1,20 @@
 from unittest import TestCase
 import unittest
 import os
+from BeautifulReport import BeautifulReport
 
 
 class TestDemo(TestCase):
     def test_demo1(self):
         """测试用例demo,函数名必须以test_开头
         """
-        print("通过用例")
+        raise ValueError("不合法的邮件标题")
+        # print("通过用例")
+    
+    def test_demo2(self):
+        print("通过用例2")
 
+        
 
 if __name__ == '__main__':
     # suite = unittest.TestSuite() # 用来组装,打包,管理多个TestCase（测试用例）文件的
