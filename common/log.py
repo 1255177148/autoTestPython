@@ -18,7 +18,7 @@ def log_init():
     if not os.path.isdir(log_path):
         os.mkdir(log_path)
     if not os.path.isfile(log_file):
-        with open(log_file, 'w') as file:
+        with open(log_file, 'w', encoding='utf-8') as file:
             pass
     logger = logging.getLogger('main')
     logger.setLevel(level=log_level)
@@ -32,7 +32,7 @@ def log_init():
     backupCount: 日志备份数量,就是保留几个日志文件,起过这个数量,就把最早的删除掉,从而滚动删除
     '''
     handler = TimedRotatingFileHandler(
-        filename=log_file, when='D', interval=1, backupCount=7)
+        filename=log_file, when='D', interval=1, backupCount=7, encoding='utf-8')
     handler.setLevel(log_level)
     handler.setFormatter(format)
     logger.addHandler(handler)
