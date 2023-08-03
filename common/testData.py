@@ -8,7 +8,7 @@ def read_excel(file, **kwargs):
         data = pandas.read_excel(file, **kwargs)
         data_dict = data.to_dict('records')
     except Exception as e:
-        logger.error('读取数据报错--->', e)
+        logger.error('读取数据报错--->', exc_info=e)
     finally:
         return data_dict
 
