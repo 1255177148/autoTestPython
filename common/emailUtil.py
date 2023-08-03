@@ -3,7 +3,6 @@ from Conf.config import smtp_config
 import smtplib
 import os
 import logging
-from email import encoders
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
@@ -68,7 +67,6 @@ class Email:
         result = True
         try:
             smtp.login(smtp_config['user'], smtp_config['passward'])
-            print(self.message['From'])
             smtp.sendmail(email_config['sender'], (str(email_config['receivers'])).split(","), self.message.as_string())
         except Exception as e:
             result = False
