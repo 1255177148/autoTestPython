@@ -4,7 +4,7 @@ from BeautifulReport import BeautifulReport
 import os
 import time
 
-base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # 项目根路径
+base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # 项目根路径
 
 if __name__ == '__main__':
     now = time.strftime('%Y-%m-%d', time.localtime())
