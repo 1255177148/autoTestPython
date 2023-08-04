@@ -1,0 +1,9 @@
+.vscode/settings.json
+common/__pycache__/
+Log/
+testCase/__pycache__/
+testCase/case/__pycache__/
+po/__pycache__/
+Log/log.txt
+Conf/__pycache__/
+report/
