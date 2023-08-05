@@ -73,6 +73,7 @@ class Email:
             logger.error("发送邮件失败------>", exc_info=e)
         finally:
             smtp.close()
+            return result
 
 if __name__ == '__main__':
     context = '<p>这是一个测试邮件</p>'
