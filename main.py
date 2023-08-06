@@ -7,8 +7,8 @@ from common.log import log_init
 from BeautifulReport import BeautifulReport
 
 projectHome = os.path.dirname(os.path.abspath(__file__)) #项目根路径
-testCasePath = os.path.join(projectHome, 'testCase').replace('\\', '/')
-reportPath = os.path.join(projectHome, 'report').replace("\\", '/')
+testCasePath = os.path.join(projectHome, 'testCase')
+reportPath = os.path.join(projectHome, 'report')
 
 log_init()#初始化日志
 logger = logging.getLogger('main')
@@ -72,7 +72,7 @@ def run_suite(suite):
     run_result = BeautifulReport(suite)
     run_result.report(description='测试报告描述',filename=fileName,report_dir=reportPath)
     report_summary = summary_format(run_result.fields)
-    return os.path.join(reportPath, fileName).replace('\\', '/'), report_summary
+    return os.path.join(reportPath, fileName), report_summary
 
 
 if __name__ == '__main__':
