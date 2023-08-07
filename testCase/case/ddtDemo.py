@@ -34,6 +34,11 @@ class DemoTest(TestCase):
     @ddt.data(*case_data3)
     def test_5(self, caseData):
         print(f'test_5--->{caseData}')
+    
+    @ddt.data(*case_data3)
+    @ddt.unpack
+    def test_6(self, a, b, c):
+        print(f'test_6--->{a},{b},{c}')
 
 if __name__ == '__main__':
     unittest.main()
