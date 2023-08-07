@@ -68,6 +68,7 @@ class Email:
         try:
             smtp.login(smtp_config['user'], smtp_config['passward'])
             smtp.sendmail(email_config['sender'], (str(email_config['receivers'])).split(","), self.message.as_string())
+            logger.info("发送邮件成功")
         except Exception as e:
             result = False
             logger.error("发送邮件失败------>", exc_info=e)
