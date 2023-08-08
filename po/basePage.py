@@ -20,7 +20,34 @@ class Page:
         self.ec = None
         self.waitTime = None
         self.js = None
+        self.elements = get_page_elements(page)
     
+    def get_page_elements(self, element):
+        """获取指定元素数据
+
+        Args:
+            element (_type_): _指定的元素名称_
+        """
+        for each in self.elements:
+            if each['name'] == element:
+                self.by = each['by']
+                self.needWait = each['needWait']
+                self.ec = each['ec']
+                if each['waitTime'] is not None:
+                    self.waitTime = each['waitTime']
+                if each['action'] is not None:
+                    self.action = each['action']
+                if each['js'] is not None:
+                    self.js = each['jc']
+    
+    def selenium_cmd(self, find_type='find_element', args=None):
+        """拼装selenium命令
+
+        Args:
+            find_type (str, optional): _description_. Defaults to 'find_element'.
+            args (_type_, optional): _description_. Defaults to None.
+        """
+        if
 
 def get_page_elements(page):
     """动态加载指定页面文件，获取文件中定义的所有元素
