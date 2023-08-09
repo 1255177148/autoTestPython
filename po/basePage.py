@@ -22,7 +22,7 @@ class Page:
         self.js = None
         self.elements = get_page_elements(page)
     
-    def get_page_elements(self, element):
+    def get_page_element(self, element):
         """获取指定元素数据
 
         Args:
@@ -38,7 +38,7 @@ class Page:
                 if each['action'] is not None:
                     self.action = each['action']
                 if each['js'] is not None:
-                    self.js = each['jc']
+                    self.js = each['js']
     
     def selenium_cmd(self, find_type='find_element', args=None):
         """拼装selenium命令
@@ -47,7 +47,22 @@ class Page:
             find_type (str, optional): _description_. Defaults to 'find_element'.
             args (_type_, optional): _description_. Defaults to None.
         """
-        if
+        cmd = ''
+        if self.needWait:
+            cmd = 'WebDriverWait(' + 'self.driver,' + self.waitTime + ', 0.5).until(EC.' + self.ec + '(' + str(self.by) + '), message="获取元素超时")'
+        else:
+            cmd = 'self.driver.' + find_type + str(self.by)
+        if self.action:
+            cmd = cmd + '.' + self.action
+            if args:
+                cmd = cmd[:-1] + "'" + args + "')"
+        print(cmd)
+        return cmd
+    
+    def operation_elem(self, element, args=None):
+        self.get_page_element(element)
+        cmd = self.selenium_cmd('find_element', args)
+        return eval(cmd)
 
 def get_page_elements(page):
     """动态加载指定页面文件，获取文件中定义的所有元素
@@ -63,3 +78,15 @@ def get_page_elements(page):
         except Exception as e:
             logger.error('加载页面,获取定义的页面元素报错--->', exc_info=e)
     return elements
+
+
+if __name__ == '__main__':
+    binary_path=(r'C://Program Files//Mozilla Firefox//firefox.exe')  #binary_path就是你的游览器路径
+    ops=Options()
+    ops.binary_location=binary_path
+    ops.set_preference("dom.webdriver.enabled", False);
+
+    driver = webdriver.Firefox(options=ops)
+    driver.get("https://www.jd.com/")
+    page = Page(driver, 'po.searchPo')
+    page.operation_elem('search_input', '电脑')
