@@ -49,7 +49,7 @@ class Page:
         """
         cmd = ''
         if self.needWait:
-            cmd = 'WebDriverWait(' + 'self.driver,' + self.waitTime + ', 0.5).until(EC.' + self.ec + '(' + str(self.by) + '), message="获取元素超时")'
+            cmd = 'WebDriverWait(self.driver,' + self.waitTime + ', 0.5).until(EC.' + self.ec + '(' + str(self.by) + '), message="获取元素超时")'
         else:
             cmd = 'self.driver.' + find_type + str(self.by)
         if self.action:
