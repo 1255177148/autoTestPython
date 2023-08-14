@@ -60,8 +60,31 @@ class Page:
         return cmd
     
     def operation_elem(self, element, args=None):
+        """定位并操作单个元素
+
+        Args:
+            element (_type_): _指定的元素名称,po类里name字段值_
+            args (_type_, optional): _操作指定元素时的参数值_. Defaults to None.
+
+        Returns:
+            _type_: _description_
+        """
         self.get_page_element(element)
         cmd = self.selenium_cmd('find_element', args)
+        return eval(cmd)
+    
+    def operation_elems(self, element, args=None):
+        """定位并操作多个个元素
+
+        Args:
+            element (_type_): _指定的元素名称,po类里name字段值,一个指定的元素名称,可以定位到多个元素_
+            args (_type_, optional): _操作指定元素时的参数值_. Defaults to None.
+
+        Returns:
+            _type_: _description_
+        """
+        self.get_page_element(element)
+        cmd = self.selenium_cmd('find_elements', args)
         return eval(cmd)
 
 def get_page_elements(page):
